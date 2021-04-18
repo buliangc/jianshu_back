@@ -6,8 +6,8 @@ const User = require('../models/user.js');  // User模型 用于处理数据库
 // 获取用户信息
 */
 
-router.get('/', (req, res, next) => {
-  User.find({})
+router.get('/', async (req, res, next) => {
+  await User.find({})
   .then((docs) => {
     res.send({
       status : "true",
@@ -27,7 +27,6 @@ router.get('/', (req, res, next) => {
 */
 router.post('/addUserInfo', function(req, res, next) {
   const {username, password, age} = req.body;
-  // console.log(mongoose.Types.ObjectId(id));
   var user = new User({
     username, // 用户名
     password, // 用户密码
