@@ -6,8 +6,8 @@ const { secret } = require('../config')
 const AdminUser = require('../models/adminuser');  // User模型 用于处理数据库
 
 /**
- * post 进行登录鉴权
- * username, password传递过来 进行鉴权 
+ * @function : post 进行登录鉴权
+ * @description : username, password传递过来 进行鉴权 
  * 如果鉴权成功 则说明数据存储在数据库中 return 状态 用户权限 
  * 如果鉴权失败 则说明数据库中没有该用户 
  */
@@ -22,23 +22,10 @@ router.post('/', async (req, res, next) => {
             currentAuthority: user.currentAuthority,
             token
         })):(res.send({
-            status: 'error',
+            status: 'psderror',
             statusCode: res.statusCode,
             msg: '密码错误!',
         }));
-        // if(isValid) {
-        //     res.send({
-        //         status: 'ok',
-        //         currentAuthority: user.currentAuthority,
-        //         token
-        //     });
-        // }else {
-        //     res.send({
-        //         status: 'error',
-        //         statusCode: res.statusCode,
-        //         msg: '密码错误!',
-        //     });  
-        // }
     }else {
         res.send({
             status: 'error',
