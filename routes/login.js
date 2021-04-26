@@ -1,8 +1,8 @@
 var express = require('express');
+const router = express.Router();
 const assert = require("http-assert");
-const jwt = require('jsonwebtoken')
-var router = express.Router();
-const { secret } = require('../config')
+const jwt = require('jsonwebtoken');
+const { secret } = require('../config');
 const AdminUser = require('../models/adminuser');  // User模型 用于处理数据库
 
 /**
